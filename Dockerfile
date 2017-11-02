@@ -1,6 +1,5 @@
 FROM lpasquali/wine:latest
 MAINTAINER Luca Pasquali <lpasquali@gmail.com>
-
 WORKDIR /home/semilanceata
 
 RUN wget -r -np -k http://amyco.fr/Pixi5X/Application%20Files/Piximetre_5_9_0_1532/ 
