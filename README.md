@@ -1,9 +1,7 @@
 ### Piximetre
 
-This image relies on
-[lpasquali/wine](https://hub.docker.com/r/lpasquali/wine/) which has latest
-wine on Debian GNU/Linux official slim stable image
-[debian:stable-slim](https://hub.docker.com/_/debian/) under Debian GNU/Linux
+This image relies on [lpasquali/wine](https://hub.docker.com/r/lpasquali/wine/) which has latest
+wine on Debian GNU/Linux official slim stable image [debian:stable-slim](https://hub.docker.com/_/debian/) under Debian GNU/Linux
 I run piximetre like this: 
 
 `docker run -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY -v $HOME/Pictures:/home/semilanceata/Pictures lpasquali/piximetre`
