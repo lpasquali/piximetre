@@ -1,13 +1,15 @@
 ### Piximetre
 
-This image relies on [lpasquali/wine](https://hub.docker.com/r/lpasquali/wine/) 
-which has latest wine on Debian GNU/Linux official stable-slim flavor, you can check [debian:stable-slim](https://hub.docker.com/_/debian/)
-
-under Debian GNU/Linux I run piximetre like this:
+This image relies on
+[lpasquali/wine](https://hub.docker.com/r/lpasquali/wine/) which has latest
+wine on Debian GNU/Linux official slim stable image
+[debian:stable-slim](https://hub.docker.com/_/debian/) under Debian GNU/Linux
+I run piximetre like this: 
 
 `docker run -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY -v $HOME/Pictures:/home/semilanceata/Pictures lpasquali/piximetre`
 
-under OSX High Sierra I use this script:
+under OSX High Sierra and latest Docker For Mac (and hardware with Apple
+Hypervisor technology) I use this script to get things working:
 
 ```
 #!/bin/bash
