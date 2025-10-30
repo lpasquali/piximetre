@@ -39,7 +39,7 @@ screen -S socat-piximetre -d -m socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT
 # Get local IP address
 ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
 if [ -z "$ip" ]; then
-    # Fallback to localhost if en0 interface not found
+    # Fallback to Docker's internal hostname if en0 interface not found
     ip="host.docker.internal"
 fi
 echo "Using IP: $ip"
@@ -48,7 +48,12 @@ echo "Using IP: $ip"
 xhost + ${ip}
 
 # Run the container
-docker run --rm -it -e DISPLAY=${ip}:0 -v /tmp/.X11-unix:/tmp/.X11-unix --name piximetre lpasquali/piximetre
+docker run --rm -it \
+  --platform linux/amd64 \
+  -e DISPLAY=${ip}:0 \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  --name piximetre \
+  lpasquali/piximetre
 
 # Cleanup
 xhost - ${ip}
