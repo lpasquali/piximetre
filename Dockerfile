@@ -1,4 +1,6 @@
-FROM lpasquali/wine:latest
+# This image is built for x86_64/amd64 architecture
+# On Apple Silicon (M1/M2/M3), Docker will use Rosetta 2 emulation
+FROM --platform=linux/amd64 lpasquali/wine:latest
 MAINTAINER Luca Pasquali <lpasquali@gmail.com>
 WORKDIR /home/semilanceata
 USER root
