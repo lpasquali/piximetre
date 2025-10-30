@@ -48,7 +48,7 @@ screen -S socat-piximetre -d -m socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT
 # Get local IP address
 ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
 if [ -z "$ip" ]; then
-    # Fallback to Docker's internal hostname if en0 interface not found
+    # Fallback to Docker Desktop for Mac's internal host gateway if en0 interface not found
     ip="host.docker.internal"
 fi
 echo "Using IP: $ip"
