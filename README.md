@@ -29,7 +29,16 @@ Under macOS with Docker Desktop, use this script to run Piximetre:
 
 ```bash
 #!/bin/bash
-# Install XQuartz if not already installed: https://www.xquartz.org/
+# Check if XQuartz is installed
+if [ ! -d "/Applications/Utilities/XQuartz.app" ] && [ ! -d "/Applications/XQuartz.app" ]; then
+    echo "Error: XQuartz is not installed. Please install it from https://www.xquartz.org/ and try again."
+    exit 1
+fi
+# Check if XQuartz is running
+if ! pgrep -x "XQuartz" > /dev/null; then
+    echo "Error: XQuartz is not running. Please start XQuartz before running this script."
+    exit 1
+fi
 # Allow connections from localhost
 xhost + 127.0.0.1
 
